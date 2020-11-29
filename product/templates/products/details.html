@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+<div class="row">
+    <div class="col-2">
+        <img src="{{obj.icon.url}}" class="img-fluid" alt="icon of {{obj.title}}">
+
+
+    </div>
+    <div class="col-10">
+      <a  href="{{obj.url}}"><h1>{{obj.title}}</h1></a>
+
+
+    </div>
+
+   <div class="row">
+       <div class="col-12">
+
+           <br>
+       </div>
+   </div>
+    
+    
+
+    <div class="row">
+        <div class="col-8">
+            <img src="{{obj.image.url}}" class="img-fluid" alt="image of {{obj.title}}">
+    
+    
+        </div>
+        <div class="col-4">
+          <a href="javascript:{document.getElementById('upvote').submit()}"><button class="btn btn-primary btn-lg-block"><img src="{% static 'upit.png' %}" alt=""> UpVote-{{obj.votes_total}} </button>   </a>
+    
+    
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <h4>this product hunted by {{obj.hunter.username }}</h4>
+        
+        
+            </div>
+            <div class="col-4">
+                
+          
+          
+              </div>
+            <div class="col-4 text-right">
+              <h4>{{obj.pub_date}}</h4>
+        
+        
+            </div>
+        
+
+
+</div>
+
+<div class="row">
+  
+    <div class="col-8 text-center">
+        <p>{{obj.body}}</p>
+        
+  
+  
+      </div>
+   
+
+
+    </div>
+
+
+
+</div>
+<form id="upvote" method="POST" action="{% url 'upvote' obj.id  %}"> <!-- had taniya ri parametre-->
+  {% csrf_token %}
+  <input type="hidden">
+</form>
+
+{% endblock %}
+
+

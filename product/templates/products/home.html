@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{%for a in abb%}
+{% load static %}
+
+<div class="row">
+    <div class="col-2">
+       <a href="{%url 'Pdetails' a.id %}"> <img src="{{a.icon.url}}" class="img-fluid" alt="icon of {{a.title}} " width="150px" height="150px"></a>
+    </div>
+<div class="col-6">
+    <a  href="{{a.url}}"><h1>{{a.title}} </h1></a>
+    <span>product numbre {{a.id}}</span>
+    <br>
+    <br>
+    <p>{{a.summary}}</p>
+        
+    </div>
+    <div class="col-4">
+        
+    </div>
+   
+</div>
+
+<br>
+<hr>
+
+{%endfor%}
+
+
+
+{% endblock %}
+
+
